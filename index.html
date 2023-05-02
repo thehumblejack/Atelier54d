@@ -1,0 +1,2443 @@
+<!doctype html>
+<html class="has-no-js is-loading has-intro" lang="en" data-template="home">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!--<base href="https://carltonvilla.com/">-->
+
+    <title>Atelier 54D — Atelier 54D</title>
+
+
+
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <meta property="og:site_name" content="Atelier 54D">
+    <meta property="og:title" content="Atelier 54D">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="HandheldFriendly" content="true">
+
+    <!-- Appearance -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="assets/images/favicons/safari-pinned-tab.svg" color="#0C0C0C">
+    <meta name="msapplication-TileColor" content="#0C0C0C">
+    <meta name="theme-color" content="#F2EFEC">
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="assets/fonts/GlossyDisplay-RegularWeb.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/GlossyDisplay-RegularItalic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/GlossyDisplay-RegularCondensedWeb.woff2" as="font" type="font/woff2"
+        crossorigin>
+    <link rel="preload" href="assets/fonts/Helvetica.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Styles -->
+    <style media="all">
+        .c-loader {
+            z-index: 500;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%
+        }
+
+        html.is-loaded .c-loader {
+            left: 200vw;
+            transition: left 0s 1.4s
+        }
+
+        .c-loader_panel {
+            position: absolute;
+            top: 0;
+            display: flex;
+            align-items: center;
+            width: calc(50% + 1px);
+            height: 100%;
+            background-color: #0C0C0C;
+            transition: transform 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s
+        }
+
+        .c-loader_panel.-left {
+            left: 0;
+            justify-content: flex-end;
+            padding-right: 6.25rem
+        }
+
+        .c-loader_panel.-right {
+            right: 0;
+            justify-content: flex-start;
+            padding-left: 6.25rem
+        }
+
+        html.is-loaded .c-loader_panel.-left {
+            transform: translate(-100%, 0)
+        }
+
+        html.is-loaded .c-loader_panel.-right {
+            transform: translate(100%, 0)
+        }
+
+        .c-loader_text {
+            opacity: 0;
+            animation: anim-loader-fade-in 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.6s
+        }
+
+        .c-loader_star {
+            position: relative;
+            opacity: 0;
+            transform: scale(0);
+            animation: anim-loader-icon-in 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.8s
+        }
+
+        html.is-loaded .c-loader_star {
+            animation: anim-loader-icon-out 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards
+        }
+
+        .c-loader_icon {
+            --loader-icon-size: 56px;
+            z-index: 1;
+            position: relative;
+            display: block;
+            width: var(--loader-icon-size);
+            height: var(--loader-icon-size);
+            color: #F2EFEC;
+            margin-top: calc(10 * var(--vh, 1vh));
+            margin-bottom: calc(10 * var(--vh, 1vh))
+        }
+
+        html.is-loaded .c-loader_icon {
+            animation: anim-loader-icon-out 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) forwards
+        }
+
+        .c-loader_keyhole {
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin-right: auto;
+            margin-left: auto
+        }
+
+        .c-loader_keyhole path {
+            fill: none;
+            stroke: currentcolor;
+            stroke-width: 2px;
+            stroke-dasharray: 269;
+            stroke-dashoffset: 269;
+            animation: anim-loader-dashoffset 1.2s ease-out forwards
+        }
+
+        .c-loader_keyhole:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.3)
+        }
+
+        @media (min-width: 1000px) {
+            .c-loader_keyhole path {
+                stroke-width: 4px
+            }
+        }
+
+        .c-loader_image {
+            opacity: 0;
+            animation: anim-loader-fade-in 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 1.2s forwards
+        }
+
+        @keyframes anim-loader-fade-in {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes anim-loader-icon-out {
+            from {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0)
+            }
+        }
+
+        @keyframes anim-loader-dashoffset {
+            to {
+                stroke-dashoffset: 0
+            }
+        }
+    </style>
+
+    <link id="main-css" rel="stylesheet" href="assets/styles/main%EF%B9%96v=1679393090368.css" media="print"
+        onload="this.media='all'; this.onload=null; this.isLoaded=true">
+
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfZ3isjAAAAANyOsqISl_qS4bbtT_03ajfCZzY1"
+        defer></script>
+
+    <!-- Timestamp for loader animation -->
+    <script>window.timestamp = new Date();</script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-54NG4PBV87"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-54NG4PBV87');
+</script>
+
+<body>
+
+
+    <div class="c-loader">
+        <div class="c-loader_panel -left">
+            <span class="c-loader_text | c-heading -h4">
+                Atelier
+            </span>
+        </div>
+        <div class="c-loader_panel -right">
+            <span class="c-loader_text | c-heading -h4">
+                54D
+            </span>
+        </div>
+
+
+        <span class="o-icon c-loader_star">
+            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+                <use xlink:href="assets/images/sprite.svg#star" xmlns:xlink="http://www.w3.org/1999/xlink" />
+            </svg>
+        </span>
+
+        <span class="c-loader_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="c-loader_keyhole">
+                <defs>
+                    <clipPath id="loader-keyhole-clip">
+                        <path
+                            d="M74.15,24.16A24.15,24.15,0,1,0,36.6,44.26L26.15,100h47.7L63.4,44.26A24.14,24.14,0,0,0,74.15,24.16Z" />
+                    </clipPath>
+                </defs>
+                <path
+                    d="M62.26,42.62l-1.07.71.24,1.26L71.44,98H28.56l10-53.41.24-1.26-1.07-.71a22.15,22.15,0,1,1,24.52,0Z" />
+                <g class="c-loader_image">
+                    <image href="/assets/images/layout/keyhole.jpg" height="100" width="100"
+                        clip-path="url(#loader-keyhole-clip)" />
+                </g>
+            </svg>
+        </span>
+
+
+        <span class="o-icon c-loader_star">
+            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+                <use xlink:href="assets/images/sprite.svg#star" xmlns:xlink="http://www.w3.org/1999/xlink" />
+            </svg>
+        </span>
+
+    </div>
+
+    <header class="c-header" data-module-header>
+        <a class="c-header_item | c-heading -caps | o-link" href="index.html" data-module-anim-text>
+
+
+            <span class="o-icon ">
+                <svg class="svg-logo" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                    focusable="false">
+                    <use xlink:href="assets/images/sprite.svg#logo" xmlns:xlink="http://www.w3.org/1999/xlink" />
+                </svg>
+            </span>
+
+            <span class="u-screen-reader-text">Atelier 54D</span>
+        </a>
+        <a class="c-header_item | c-heading -caps | o-link" href="#contact" data-module-anim-text>Contact</a>
+        <button class="c-header_item -button-audio" data-header="toggleAudio">
+
+
+            <span class="o-icon ">
+                <svg class="svg-audio-on" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                    focusable="false">
+                    <use xlink:href="assets/images/sprite.svg#audio-on" xmlns:xlink="http://www.w3.org/1999/xlink" />
+                </svg>
+            </span>
+
+
+
+            <span class="o-icon ">
+                <svg class="svg-audio-off" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                    focusable="false">
+                    <use xlink:href="assets/images/sprite.svg#audio-off" xmlns:xlink="http://www.w3.org/1999/xlink" />
+                </svg>
+            </span>
+
+            <span class="u-screen-reader-text">Toggle audio</span>
+        </button>
+        <button class="c-header_item -button-nav" data-header="toggleNav">
+            <span></span>
+            <span></span>
+            <span class="u-screen-reader-text">Toggle menu</span>
+        </button>
+        <button class="c-header_overlay" data-header="closeNav">
+            <span class="u-screen-reader-text">Close menu</span>
+        </button>
+        <nav class="c-nav">
+            <ul class="c-nav_list">
+                <li class="c-nav_item">
+                    <h3 class="c-nav_label | c-heading -h5" data-module-anim-text>
+                        Chapter 1
+                    </h3>
+                    <a href="#interiors" class="c-nav_link | c-heading -h3 | o-link" data-module-anim-text
+                        data-anim-text-type="chars" data-header="link">
+                        Interiors
+                    </a>
+                </li>
+                <li class="c-nav_item">
+                    <h3 class="c-nav_label | c-heading -h5" data-module-anim-text>
+                        Chapter 2
+                    </h3>
+                    <a href="#exteriors" class="c-nav_link | c-heading -h3 | o-link" data-module-anim-text
+                        data-anim-text-type="chars" data-header="link">
+                        Exteriors
+                    </a>
+                </li>
+                <li class="c-nav_item">
+                    <h3 class="c-nav_label | c-heading -h5" data-module-anim-text>
+                        Chapter 3
+                    </h3>
+                    <a href="#extras" class="c-nav_link | c-heading -h3 | o-link" data-module-anim-text
+                        data-anim-text-type="chars" data-header="link">
+                        Extras
+                    </a>
+                </li>
+                <li class="c-nav_item">
+                    <h3 class="c-nav_label | c-heading -h5" data-module-anim-text>
+                        Chapter 4
+                    </h3>
+                    <a href="#contact" class="c-nav_link | c-heading -h3 | o-link" data-module-anim-text
+                        data-anim-text-type="chars" data-header="link">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main data-module-scroll>
+
+
+        <div class="c-video -intro" data-module-video data-video-chapter="0">
+            <div class="c-video_inner">
+                <video class="c-video_video" src="" data-src="assets/videos/video-0.mp4" muted playsinline
+                    data-video-preload poster="assets/videos/poster-0.jpg" data-video="video" type="video/mp4"></video>
+                <header class="c-video_panel -header" data-video="header">
+                    <div class="c-video_content">
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                        <h2 class="c-video_sup | c-heading -caps" data-module-anim-text>
+                            Atelier 54D
+                        </h2>
+                        <h3 class="c-video_title | c-heading -h1" data-module-anim-text data-anim-text-type="chars">
+                            IN THE HEART OF BARBADOS&#039; PLATINUM COAST
+                        </h3>
+                        <h4 class="c-video_desc | c-heading -caps" data-module-anim-text>
+                            West Coast, Barbados
+                        </h4>
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                        <div class="c-video_bottom">
+                            <button class="c-video_start | o-text-small" data-video="start">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Unlock <br>
+                                Paradise
+                            </button>
+                        </div>
+                    </div>
+                </header>
+                <div class="c-video_bottom -skip">
+                    <button class="o-text-small o-link" data-module-anim-text data-video="skip">Skip Intro</button>
+                </div>
+                <div class="c-video_panel" data-video="panel">
+                    <div class="c-video_content">
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                        <p class="c-video_desc | c-heading -h4" data-module-anim-text>
+                            The height of beach front luxury awaits
+                        </p>
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="c-video_panel" data-video="panel">
+                    <div class="c-video_content">
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                        <p class="c-video_desc | c-heading -h4" data-module-anim-text>
+                            A one-of-a-kind Barbados estate
+                        </p>
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="c-video_panel" data-video="panel">
+                    <div class="c-video_content">
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                        <p class="c-video_desc | c-heading -h4" data-module-anim-text>
+                            Welcome to Atelier 54D
+                        </p>
+
+
+                        <span class="o-icon c-video_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+
+
+            <article id="interiors" class="c-chapter ">
+
+
+                <section class="c-hero -header | o-container">
+                    <header class="c-hero_header" data-scroll data-scroll-position="middle, end">
+                        <span class="c-hero_before">
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                            <span class="c-hero_heading | c-heading -h2" data-module-anim-text
+                                data-anim-text-type="chars">
+                                1
+                            </span>
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                        </span>
+                        <h3 class="c-hero_sup | c-heading -caps" data-module-anim-text>
+                            Interiors
+                        </h3>
+                        <h2 class="c-hero_title | c-heading -h1 -center" data-module-anim-text
+                            data-anim-text-type="chars">
+                            Discover the interiors
+                        </h2>
+                    </header>
+
+
+
+
+
+
+
+
+
+                    <figure class="c-image c-hero_cover -header -lazy-load -parallax">
+                        <span class="c-image_inner">
+                            <img class="c-image_img " alt="" width="503" height="800"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                data-src="assets/images/layout/c1/c1-hero-1.jpg" data-scroll
+                                data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                        </span>
+                    </figure>
+
+                </section>
+
+
+                <div class="c-video" data-module-video data-video-chapter="1">
+                    <div class="c-video_inner">
+                        <video class="c-video_video" src="" data-src="assets/videos/video-1.mp4" muted playsinline loop
+                            preload="metadata" data-video="video" type="video/mp4"></video>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Expansive
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Open floor plan and full height windows, perfect to entertain guests and relax.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Revitalising
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Relax in a true oasis, with spa-like areas and breathtaking views of the Caribbean
+                                    Sea.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Stimulating
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Dine in the elegant yet casual spaces within, while enjoying the lush tropical
+                                    greenery outside.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Restful
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Fall asleep to the soothing waves, wake up to breathtaking views.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_bottom">
+                            <span class="o-text-small">Scroll</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-chapter_content">
+
+
+                    <section class="c-hero  | o-container">
+                        <header class="c-hero_header" data-scroll data-scroll-position="middle, end">
+                            <h2 class="c-hero_title | c-heading -h2 -center" data-module-anim-text
+                                data-anim-text-type="chars">
+                                Architecture that blends luxury with Caribbean charm
+                            </h2>
+                        </header>
+
+                        <div class="c-hero_visual c-gallery -small">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-hero-1.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-hero-2.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <div class="o-container">
+
+
+                        <div class="c-section-heading" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h2 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    A unique location for a luxurious lifestyle
+                                </h2>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="2100" height="1952"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2100 1952'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/c1/c1-large.jpg" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+
+
+                        <div class="c-section-heading -sticky" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+                                <h3 class="c-section-heading_sup | c-heading -caps" data-module-anim-text>
+                                    Our highlights
+                                </h3>
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h1 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Ultimate beach living
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-features | o-container">
+                        <ul class="c-features_list">
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="503" height="696"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 696'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-21_at_1.03_1-503x696.png" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Generous Proportions</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Enjoy spacious living in 19,000 square feet over 3 floors.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="768" height="660"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 768 660'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-23_at_6.34_1-768x660.png" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Lavish Comfort</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Luxuriate in 9 serene and soothing bathrooms.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="503" height="513"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 513'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-23_at_6.45_1-503x513.png" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">(Bed)rooms With A View</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Seven generously sized, carefully designed bedrooms. Each is a luxurious oasis
+                                        of natural textures and earth tones that create a calming ambiance.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1035" height="903"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1035 903'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-21_at_1.03_1_(1)-1035x903.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Breathe Easy</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Light filled spaces that offer a seamless flow, with an easy breezy feel and
+                                        modern design.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1568" height="870"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1568 870'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-23_at_6.34_1_(1)-1568x870.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Sleep In Style</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Wake up refreshed in luxurious bedrooms inspired by nature.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="o-container">
+
+
+                        <div class="c-section-heading" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h2 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Uncluttered Living
+                                </h2>
+                            </div>
+                        </div>
+
+
+
+                        <div class=" c-gallery -small">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-section-1.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-section-2.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+
+
+                        <div class=" c-gallery -alternate">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="1035" height="1169"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1035 1169'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-gallery-1.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="1035" height="1169"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1035 1169'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-gallery-2.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="2100" height="1441"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2100 1441'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c1/c1-gallery-3.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+
+
+                    </div>
+                </div>
+            </article>
+
+            <article id="exteriors" class="c-chapter -invert">
+
+
+                <section class="c-hero -header | o-container">
+                    <header class="c-hero_header" data-scroll data-scroll-position="middle, end">
+                        <span class="c-hero_before">
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                            <span class="c-hero_heading | c-heading -h2" data-module-anim-text
+                                data-anim-text-type="chars">
+                                2
+                            </span>
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                        </span>
+                        <h3 class="c-hero_sup | c-heading -caps" data-module-anim-text>
+                            Exteriors
+                        </h3>
+                        <h2 class="c-hero_title | c-heading -h1 -center" data-module-anim-text
+                            data-anim-text-type="chars">
+                            Discover the exteriors
+                        </h2>
+                    </header>
+
+
+
+
+
+
+
+
+
+                    <figure class="c-image c-hero_cover -header -lazy-load -parallax">
+                        <span class="c-image_inner">
+                            <img class="c-image_img " alt="" width="503" height="800"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                data-src="assets/images/layout/c2/c2-hero-1.jpg" data-scroll
+                                data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                        </span>
+                    </figure>
+
+                </section>
+
+
+                <div class="c-video" data-module-video data-video-chapter="2">
+                    <div class="c-video_inner">
+                        <video class="c-video_video" src="" data-src="assets/videos/video-2.mp4" muted playsinline loop
+                            preload="metadata" data-video="video" type="video/mp4"></video>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Paradise Found
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Floating twin gazebos are perfect for poolside entertaining or lounging.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Shaded Oasis
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Relax in over 125 linear feet of covered poolside comfort.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Infinite tranquility
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Dive into the 2800 sq ft infinity pool seamlessly aligned with the horizon.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Nature’s Playground
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Lush, exotic grounds and stunning beach front location make Carlton Villa a dream to
+                                    explore.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_bottom">
+                            <span class="o-text-small">Scroll</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-chapter_content">
+
+
+                    <section class="c-hero  | o-container">
+                        <header class="c-hero_header" data-scroll data-scroll-position="middle, end">
+                            <h2 class="c-hero_title | c-heading -h2 -center" data-module-anim-text
+                                data-anim-text-type="chars">
+                                Beachfront living, elevated
+                            </h2>
+                        </header>
+
+                        <div class="c-hero_visual c-gallery -small">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c2/c2-hero-1.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c2/c2-hero-2.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <div class="o-container">
+
+
+                        <div class="c-section-heading" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h2 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Dive into luxury
+                                </h2>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="1400" height="1300"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 1300'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/c2/c2-large.jpg" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+
+
+                        <div class="c-section-heading -sticky" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+                                <h3 class="c-section-heading_sup | c-heading -caps" data-module-anim-text>
+                                    Our highlights
+                                </h3>
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h1 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Sun-kissed serenity
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-features | o-container">
+                        <ul class="c-features_list">
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="503" height="696"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 696'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-21_at_1.03_1_(2)-503x696.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Poolside Paradise</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Soak up the sun then dip into the cool, refreshing waters of the infinity pool.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="768" height="660"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 768 660'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-23_at_6.34_1_(2)-768x660.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Open Air Dining</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Entertaining is a breeze in these covered outdoor spaces with everything you
+                                        need just steps away.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="503" height="513"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 513'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-23_at_6.45_1_(1)-503x513.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Garden Party</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        With ample space and natural beauty, the gardens set the stage for unforgettable
+                                        gatherings, big or small.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1035" height="903"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1035 903'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-21_at_1.03_1_(4)-1035x903.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Design Meets Nature</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        The immaculate furnishings and garden architecture unite the natural beauty with
+                                        contemporary design.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load -parallax">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1568" height="870"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1568 870'%3E%3C/svg%3E"
+                                            data-src="uploads/Screen_Shot_2022-09-23_at_6.34_1_(3)-1568x870.png"
+                                            data-scroll data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">A Rare Gem</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        This is your opportunity to own this one-of-a-kind villa set in almost two acres
+                                        of prime beachfront land.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="o-container">
+
+
+                        <div class="c-section-heading" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h2 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Carlton Villa redefines luxury living
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="c-chapter_video">
+                            <video src="assets/videos/drone.mp4" loop muted playsinline
+                                data-module-video-autoplay></video>
+                        </div>
+
+
+
+
+                        <div class=" c-gallery -alternate">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="1036" height="1169"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1036 1169'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c2/c2-gallery-1.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="1036" height="1169"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1036 1169'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c2/c2-gallery-2.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="2101" height="1441"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2101 1441'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c2/c2-gallery-3.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+
+
+                    </div>
+                </div>
+            </article>
+
+            <article id="extras" class="c-chapter ">
+
+
+                <section class="c-hero -header | o-container">
+                    <header class="c-hero_header" data-scroll data-scroll-position="middle, end">
+                        <span class="c-hero_before">
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                            <span class="c-hero_heading | c-heading -h2" data-module-anim-text
+                                data-anim-text-type="chars">
+                                3
+                            </span>
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                        </span>
+                        <h3 class="c-hero_sup | c-heading -caps" data-module-anim-text>
+                            Extras
+                        </h3>
+                        <h2 class="c-hero_title | c-heading -h1 -center" data-module-anim-text
+                            data-anim-text-type="chars">
+                            Discover the extras
+                        </h2>
+                    </header>
+
+
+
+
+
+
+
+
+
+                    <figure class="c-image c-hero_cover -header -lazy-load -parallax">
+                        <span class="c-image_inner">
+                            <img class="c-image_img " alt="" width="503" height="800"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                data-src="assets/images/layout/c3/c3-hero-1.jpg" data-scroll
+                                data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                        </span>
+                    </figure>
+
+                </section>
+
+
+                <div class="c-video" data-module-video data-video-chapter="3">
+                    <div class="c-video_inner">
+                        <video class="c-video_video" src="" data-src="assets/videos/video-3.mp4" muted playsinline loop
+                            preload="metadata" data-video="video" type="video/mp4"></video>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Let your mind unwind
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Relax as you bask in the comfort of a lavish private lounge, soothed by the
+                                    refreshing Caribbean breezes.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Take in the views
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Get lost in the breathtaking vistas as the unobstructed horizon blends with the
+                                    picture-perfect natural surroundings.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_panel" data-video="panel">
+                            <div class="c-video_content">
+                                <h3 class="c-video_title | c-heading -h2" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Break a sweat
+                                </h3>
+                                <p class="c-video_desc | o-text -large" data-module-anim-text>
+                                    Your private sea-facing gym will inspire you to go that extra mile.
+                                </p>
+
+
+                                <span class="o-icon c-video_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="c-video_bottom">
+                            <span class="o-text-small">Scroll</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-chapter_content">
+
+
+                    <section class="c-hero  | o-container">
+                        <header class="c-hero_header" data-scroll data-scroll-position="middle, end">
+                            <h2 class="c-hero_title | c-heading -h2 -center" data-module-anim-text
+                                data-anim-text-type="chars">
+                                Leave the ordinary out of extraordinary
+                            </h2>
+                        </header>
+
+                        <div class="c-hero_visual c-gallery -small">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c3/c3-hero-1.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="800"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 800'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c3/c3-hero-2.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <div class="o-container">
+
+
+                        <div class="c-section-heading" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h2 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Chilled out extravagance
+                                </h2>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="1400" height="1300"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 1300'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/c3/c3-large.jpg" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+
+
+                        <div class="c-section-heading -sticky" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+                                <h3 class="c-section-heading_sup | c-heading -caps" data-module-anim-text>
+                                    Our highlights
+                                </h3>
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h1 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Create memorable moments
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-features | o-container">
+                        <ul class="c-features_list">
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load" data-module-modal-image-trigger
+                                    data-modal-image-trigger="toggler"
+                                    data-modal-image-trigger-src="uploads/Carlton-Villa-Barbados-Site-Plan.jpg"
+                                    aria-label="Open image">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1500" height="1800"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 1800'%3E%3C/svg%3E"
+                                            data-src="uploads/Carlton-Villa-Barbados-Site-Plan.jpg" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Ground Floor Plan</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Bedroom 07, BBQ Station, Dining, Terrace, Covered Terraces, Kitchen, Study,
+                                        Elevator, Lobby, Great Room, Infinity Pool, Library, Powder Room, Media Room,
+                                        Gym, Main Entrance.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load" data-module-modal-image-trigger
+                                    data-modal-image-trigger="toggler"
+                                    data-modal-image-trigger-src="uploads/Carlton-Villa-Barbados-Ground-Floor.jpg"
+                                    aria-label="Open image">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1500" height="1500"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 1500'%3E%3C/svg%3E"
+                                            data-src="uploads/Carlton-Villa-Barbados-Ground-Floor.jpg" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">First Floor Plan</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Bedroom 06, Bedroom 05, Master Bedroom 02, Master Bedroom 01 (Dressing Room,
+                                        Master Living Room), Bedroom 04, Bedroom 03, Elevator Lobby.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load" data-module-modal-image-trigger
+                                    data-modal-image-trigger="toggler"
+                                    data-modal-image-trigger-src="uploads/Carlton-Villa-Barbados-Basement-Floor.jpg"
+                                    aria-label="Open image">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1500" height="1500"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 1500'%3E%3C/svg%3E"
+                                            data-src="uploads/Carlton-Villa-Barbados-Basement-Floor.jpg" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Sub Floor Level</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        Garage parking for vehicles with direct access to the private elevator servicing
+                                        all floors.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image  -lazy-load" data-module-modal-image-trigger
+                                    data-modal-image-trigger="toggler"
+                                    data-modal-image-trigger-src="uploads/Group_44-final.jpg" aria-label="Open image">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="690" height="602"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 690 602'%3E%3C/svg%3E"
+                                            data-src="uploads/Group_44-final.jpg" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Three Dimensional Render</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        A bird’s eye view of what Carlton Villa will be upon completion.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="c-features_item">
+                                <p class="c-features_sup | c-heading -h5" data-scroll data-scroll-css-progress
+                                    data-module-anim-text></p>
+
+
+
+
+
+
+
+
+
+                                <figure class="c-image c-features_image -no-cover  -lazy-load"
+                                    data-module-modal-image-trigger data-modal-image-trigger="toggler"
+                                    data-modal-image-trigger-src="uploads/Carlton-Villa-External-Birds-Eye.png"
+                                    aria-label="Open image">
+                                    <span class="c-image_inner">
+                                        <img class="c-image_img " alt="" width="1045" height="580"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1045 580'%3E%3C/svg%3E"
+                                            data-src="uploads/Carlton-Villa-External-Birds-Eye.png" data-scroll
+                                            data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                    </span>
+                                </figure>
+                                <div class="c-features_content">
+                                    <h3 class="c-features_title | c-heading -h3" data-scroll data-scroll-css-progress
+                                        data-module-anim-text data-anim-text-type="chars">Site Plan</h3>
+                                    <p class="c-features_desc | o-text" data-scroll data-scroll-css-progress
+                                        data-module-anim-text>
+                                        The full layout of the grounds and main estate.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="o-container">
+
+
+                        <div class="c-section-heading" data-scroll data-scroll-offset="30%, 0">
+                            <div class="c-section-heading_inner">
+
+
+                                <span class="o-icon c-section-heading_icon">
+                                    <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#star"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                                <h2 class="c-section-heading_title | c-heading -h2 -center" data-module-anim-text
+                                    data-anim-text-type="chars">
+                                    Make Carlton Villa your reality
+                                </h2>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class=" c-gallery -alternate">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image c-gallery_item  -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="2100" height="1440"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2100 1440'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/c3/c3-gallery-3.jpg" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+
+
+                    </div>
+                </div>
+            </article>
+
+            <section id="contact" class="c-contact | o-container">
+                <div class="c-contact_inner | o-container" data-scroll data-scroll-css-progress>
+                    <header class="c-contact_header">
+                        <span class="c-contact_title | c-heading -h2">
+
+
+                            <span class="o-icon c-contact_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                            <span data-module-anim-text data-anim-text-type="chars">Contact</span>
+
+
+                            <span class="o-icon c-contact_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                        </span>
+                        <h2 class="c-contact_sub | c-heading -caps" data-module-anim-text>
+                            Carlton Villa
+                        </h2>
+                    </header>
+                    <p class="c-contact_heading | c-heading -h1" data-module-anim-text data-anim-text-type="chars">
+                        Unlock the dream</p>
+                    <div class="c-contact_grid">
+                        <div class="c-contact_item">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image   -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="766" height="711"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 766 711'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/contact/image-1.webp" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+                        <div class="c-contact_item">
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image   -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="503" height="353"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 503 353'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/contact/image-2.webp" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+                        <div class="c-contact_item">
+
+
+                            <button class="c-contact_button c-button " data-module-modal-trigger
+                                data-modal-trigger="toggler" aria-label="Open contact form">
+                                <span class="c-button_label | c-heading -h3">
+                                    Request more information
+                                </span>
+
+
+                                <span class="o-icon c-button_icon">
+                                    <svg class="svg-union" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <use xlink:href="assets/images/sprite.svg#union"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                    </svg>
+                                </span>
+
+                            </button>
+
+
+
+
+
+
+
+
+
+                            <figure class="c-image   -lazy-load -parallax">
+                                <span class="c-image_inner">
+                                    <img class="c-image_img " alt="" width="1035" height="636"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1035 636'%3E%3C/svg%3E"
+                                        data-src="assets/images/layout/contact/image-3.webp" data-scroll
+                                        data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                                </span>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="c-footer | o-container" data-scroll data-scroll-offset="166%, 0" data-scroll-repeat
+            data-scroll-call="toggleBottom, Header">
+            <div class="c-footer_inner">
+                <div class="c-footer_content">
+                    <h2 class="c-footer_heading | c-heading -h2">
+
+
+                        <span class="o-icon c-footer_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                        <span class="c-footer_title" data-module-anim-text data-anim-text-type="chars">
+                            Carlton<br>Villa
+                        </span>
+
+
+                        <span class="o-icon c-footer_icon">
+                            <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                focusable="false">
+                                <use xlink:href="assets/images/sprite.svg#star"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" />
+                            </svg>
+                        </span>
+
+                    </h2>
+                    <h3 class="c-footer_sub | c-heading -caps" data-module-anim-text>Barbados</h3>
+                </div>
+                <div class="c-footer_canvas">
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="502" height="280"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 502 280'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-1.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="292" height="298"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 298'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-2.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="292" height="298"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 298'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-3.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="528" height="324"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 528 324'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-4.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="534" height="366"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 534 366'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-5.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="292" height="298"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 298'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-6.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="292" height="298"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 298'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-7.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                    <div class="c-footer_image">
+
+
+
+
+
+
+
+
+
+                        <figure class="c-image   -lazy-load -parallax">
+                            <span class="c-image_inner">
+                                <img class="c-image_img " alt="" width="484" height="340"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 484 340'%3E%3C/svg%3E"
+                                    data-src="assets/images/layout/footer/image-8.webp" data-scroll
+                                    data-scroll-call="lazyLoad, Scroll" data-scroll-css-progress>
+                            </span>
+                        </figure>
+                    </div>
+                </div>
+                <div class="c-footer_bottom">
+                    <p class="c-heading -caps">Carlton Villa &copy;2023</p>
+                    <p class="c-heading -caps">
+                        Website by
+                        <a href="https://locomotive.ca/en" target="_blank" rel="noopener noreferrer"
+                            class="o-link">Locomotive</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <div class="c-modal " data-module-modal>
+            <button class="c-modal_close" data-modal="close">
+                <span class="o-text-small">CLOSE</span>
+
+
+                <span class="o-icon ">
+                    <svg class="svg-cross" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                        focusable="false">
+                        <use xlink:href="assets/images/sprite.svg#cross" xmlns:xlink="http://www.w3.org/1999/xlink" />
+                    </svg>
+                </span>
+
+            </button>
+            <div class="c-modal_inner | o-container" data-lenis-prevent>
+
+
+                <section class="c-hero  | o-container">
+                    <header class="c-hero_header">
+                        <span class="c-hero_before">
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                            <span class="c-hero_heading | c-heading -h2" data-module-anim-text
+                                data-anim-text-type="chars">
+                                Contact
+                            </span>
+
+
+                            <span class="o-icon c-hero_icon">
+                                <svg class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                                    focusable="false">
+                                    <use xlink:href="assets/images/sprite.svg#star"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" />
+                                </svg>
+                            </span>
+
+                        </span>
+                        <h3 class="c-hero_sup | c-heading -caps" data-module-anim-text>
+                            Carlton villa
+                        </h3>
+                        <h2 class="c-hero_title | c-heading -h1 -center" data-module-anim-text
+                            data-anim-text-type="chars">
+                            Own the dream
+                        </h2>
+                    </header>
+
+                </section>
+
+                <p class="c-modal_text | o-text-large -max-width" data-module-anim-text>
+                    Own your own piece of paradise on Barbados’ Platinum Coast. Contact us today.
+                </p>
+
+                <form action="https://carltonvilla.com/contact/enquiry" class="c-modal_form | c-form" method="post"
+                    data-module-form data-form-use-recaptcha="true" data-form="form" data-form-reset novalidate>
+
+                    <div class="c-form_el " data-form="field">
+                        <div class="o-input-text">
+                            <input id="name" name="name" type="text" autocomplete="name" required data-form="input"
+                                data-module-form-input-text>
+                            <label for="name">Name</label>
+                        </div>
+                        <span class="c-form_error | o-text -small" data-form="error"></span>
+                    </div>
+
+
+                    <div class="c-form_el " data-form="field">
+                        <div class="o-input-text">
+                            <input id="email" name="email" type="email" autocomplete="email" required data-form="input"
+                                data-module-form-input-text>
+                            <label for="email">Email address</label>
+                        </div>
+                        <span class="c-form_error | o-text -small" data-form="error"></span>
+                    </div>
+
+
+
+                    <button class="c-form_submit c-button -submit">
+                        <span class="c-button_label | c-heading -h3">
+                            Send
+                        </span>
+                    </button>
+
+
+
+                    <button class="c-form_submit -success c-button -submit">
+                        <span class="c-button_label | c-heading -h3">
+                            Information sent
+                        </span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="c-modal -image" data-module-modal-image>
+            <button class="c-modal_close" data-modal-image="close">
+                <span class="o-text-small">CLOSE</span>
+
+
+                <span class="o-icon ">
+                    <svg class="svg-cross" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"
+                        focusable="false">
+                        <use xlink:href="assets/images/sprite.svg#cross" xmlns:xlink="http://www.w3.org/1999/xlink" />
+                    </svg>
+                </span>
+
+            </button>
+            <div class="c-modal_inner | o-container" data-lenis-prevent>
+
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    class="c-modal_image" data-modal-image="image" />
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="assets/scripts/app%EF%B9%96v=1679393090368.js"></script>
+
+    <script>
+        window.app = {
+            recaptchaPublicKey: "6LfZ3isjAAAAANyOsqISl_qS4bbtT_03ajfCZzY1",
+        }
+    </script>
+    <div id="grecaptcha-container-id"></div>
+</body>
+
+</html>
