@@ -1,0 +1,5 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false" width="17"  height="17" ><defs><symbol viewBox="0 0 16 16" id="star">
+    <path d="M8,0l.62,7.38L16,8l-7.38.62L8,16,7.38,8.62,0,8l7.38-.62Z"></path>
+</symbol></defs>
+        <use xlink:href="#star" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#F2EFEC"></use>
+    </svg>
